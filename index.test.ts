@@ -1,8 +1,7 @@
-import assert from 'node:assert/strict';
-import { describe, it } from 'node:test';
+import { describe, expect, it } from 'bun:test';
 
-void describe('hello-ts', () => {
-  void it('should pass a basic sanity check', () => {
-    assert.equal(1 + 1, 2);
+describe('hello-ts', () => {
+  it('should pass a basic sanity check', () => {
+    expect(1 + 1).toBe(2);
   });
 });
