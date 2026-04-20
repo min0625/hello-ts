@@ -19,30 +19,24 @@
 
 1. 用 VS Code 開啟專案資料夾
 2. 按下左下角的 `><` 圖示，選擇 **Reopen in Container**
-3. 等待容器建置完成，Node.js 與 nvm 會自動安裝
+3. 等待容器建置完成，Bun 會自動安裝
 
-### 選項 B：使用 nvm 自行準備環境
+### 選項 B：自行安裝 Bun
 
 **步驟：**
 
-1. 安裝 [nvm](https://github.com/nvm-sh/nvm)
-2. 在專案根目錄執行以下指令，安裝並切換至指定的 Node.js 版本（`v25.9.0`）：
-
-```bash
-nvm install
-nvm use
-```
+1. 依照 [Bun 官方文件](https://bun.sh/docs/installation) 安裝 Bun（需 `>= 1.2`）
 
 ## 安裝
 
 ```bash
-npm install
+bun install
 ```
 
 ## 啟動專案
 
 ```bash
-npm start
+bun start
 ```
 
 執行後會在終端機印出：
@@ -53,27 +47,26 @@ Hello, TypeScript!
 
 ## 其他指令
 
-| 指令                   | 說明                                              |
-| ---------------------- | ------------------------------------------------- |
-| `npm run build`        | 將 TypeScript 編譯為 JavaScript（輸出至 `dist/`） |
-| `npm run typecheck`    | 執行型別檢查，不產生編譯輸出                      |
-| `npm run lint`         | 執行 ESLint 程式碼檢查                            |
-| `npm run lint:fix`     | 自動修正 ESLint 問題                              |
-| `npm run format`       | 使用 Prettier 格式化程式碼                        |
-| `npm run format:check` | 檢查程式碼格式是否符合規範                        |
-| `npm run check`        | 一次執行型別檢查、Lint、格式檢查及測試            |
-| `npm run fix`          | 自動修正 Lint 及格式問題                          |
+| 指令                  | 說明                                              |
+| --------------------- | ------------------------------------------------- |
+| `bun run dev`         | 以監看模式執行（檔案變更時自動重啟）                 |
+| `bun run build`       | 將 TypeScript 編譯為 JavaScript（輸出至 `dist/`）  |
+| `bun run clean`       | 刪除 `dist/` 輸出目錄                              |
+| `bun test`            | 執行測試                                           |
+| `bun run check:type`  | 執行型別檢查，不產生編譯輸出                         |
+| `bun run check:biome` | 執行 Biome 程式碼檢查                               |
+| `bun run check`       | 一次執行型別檢查、Biome 檢查及測試                   |
+| `bun run fix`         | 自動修正 Biome 問題                                 |
 
 ## 專案結構
 
 ```
 hello-ts/
 ├── index.ts           # 主程式入口
+├── index.test.ts      # 測試檔案
 ├── tsconfig.json      # TypeScript 設定
-├── eslint.config.js   # ESLint 設定
-├── .prettierrc        # Prettier 格式化設定
-├── .prettierignore    # Prettier 忽略清單
-├── .nvmrc             # Node.js 版本鎖定
+├── biome.json         # Biome Lint 與格式化設定
+├── bun.lock           # Bun 相依套件鎖定
 ├── .gitignore         # Git 忽略清單
 └── package.json       # 專案設定與相依套件
 ```
